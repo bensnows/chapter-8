@@ -24,7 +24,7 @@ services:
      - DBHOST=mongodb://db:27017
      - FIXTURES_DIR=fixtures
     volumes:
-     - ./fixtures:/usr/src/app/fixtures:z
+     - /src/fixtures:/usr/src/app/fixtures:z
     depends_on:
       - db
     restart: always
@@ -37,8 +37,8 @@ services:
     container_name: gateway
     volumes:
       - /tmp/gateway/npm-cache:/root/.npm:z
-      - ./gateway/src:/usr/src/app/src:z
-      - ./gateway/public:/usr/src/app/public:z
+      - /src/gateway/src:/usr/src/app/src:z
+      - /src/gateway/public:/usr/src/app/public:z
     ports:
       - "4000:80"
     environment:
@@ -54,7 +54,7 @@ services:
     container_name: metadata
     volumes:
       - /tmp/metadata/npm-cache:/root/.npm:z
-      - ./metadata/src:/usr/src/app/src:z
+      - /src/metadata/src:/usr/src/app/src:z
     ports:
      - "4006:80"
     environment:
